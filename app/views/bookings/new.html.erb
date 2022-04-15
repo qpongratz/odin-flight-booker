@@ -1,7 +1,7 @@
-  <p>From: <%= @flight.departure_airport.name %></p>
-  <p>To: <%= @flight.arrival_airport.name %></p>
-  <p>On: <%= @flight.date %></p>
-  <p>Length: <%= @flight.duration %></p>
+<p>From: <%= @flight.departure_airport.name %></p>
+<p>To: <%= @flight.arrival_airport.name %></p>
+<p>On: <%= @flight.date %></p>
+<p>Length: <%= @flight.duration %></p>
 
 <%= form_with model: @booking do |b| %>
   <% @passengers.each_with_index do |passenger, index| %>
