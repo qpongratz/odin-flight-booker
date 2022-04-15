@@ -10,6 +10,11 @@
   <%= f.select :passenger_count, [1,2,3,4] %>
   <%= f.submit 'Search'%>
 <% end %>
+
+<%= form_with method: 'get', url: new_flight_path do |f| %>
+  <%= f.collection_radio_buttons :flight_id, @flights, :id, :duration %>
+  <%= f.submit 'Go!'%>
+<% end %>
  
 <% @flights.each do |flight| %>
   <p>From: <%= flight.departure_airport.name %></p>
