@@ -13,6 +13,7 @@
 
 <%= form_with method: 'get', url: new_booking_path do |f| %>
   <%= f.collection_radio_buttons :flight_id, @flights, :id, :duration %>
+  <%= f.hidden_field :passenger_count, value: params[:passenger_count] %>
   <%= f.submit 'Go!'%>
 <% end %>
  
