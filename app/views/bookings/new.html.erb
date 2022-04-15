@@ -4,15 +4,13 @@
 <p>Length: <%= @flight.duration %></p>
 
 <%= form_with model: @booking do |b| %>
-  <% @passengers.each_with_index do |passenger, index| %>
-    <%= fields_for passenger do |p| %>
-      <%= "Passenger #{index + 1}"%>
-      <%= p.label :name %>
-      <%= p.text_field :name %>
-      <%= p.label :email %>
-      <%= p.email_field :email %>
-      <br>
-    <% end %>
+  <%= b.hidden_field :flight_id, value: @flight.id %>
+  <%= b.fields_for :passengers do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field :name %>
+    <%= p.label :email %>
+    <%= p.email_field :email %>
+    <br>
   <% end %>
   <%= b.submit %>
 <% end %>
