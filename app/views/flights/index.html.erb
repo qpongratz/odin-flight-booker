@@ -1,12 +1,19 @@
 <h1>Flights</h1>
 <%= form_with method: 'get', url: flights_path do |f| %>
-  <%= f.label :departure_airport_id, 'From:'%>
-  <%= f.collection_select :departure_airport_id, Airport.order(:name), :id, :name %> <br>
-  <%= f.label :arrival_airport_id, 'To:' %>
-  <%= f.collection_select :arrival_airport_id, Airport.order(:name), :id, :name %> <br>
+  <%= f.label :departure, 'From:'%>
+  <%= f.collection_select :departure, Airport.order(:name), :id, :name %> <br>
+  <%= f.label :arrival, 'To:' %>
+  <%= f.collection_select :arrival, Airport.order(:name), :id, :name %> <br>
   <%= f.label :date, 'On:'%>
   <%= f.select :date, Flight.valid_dates %> <br>
   <%= f.label :passenger_count, 'Number of Passengers:' %>
   <%= f.select :passenger_count, [1,2,3,4] %>
   <%= f.submit 'Search'%>
+<% end %>
+ 
+<% @flights.each do |flight| %>
+  <p>From: <%= flight.departure_airport.name %></p>
+  <p>To: <%= flight.arrival_airport.name %></p>
+  <p>On: <%= flight.date %></p>
+  <p>Length: <%= flight.duration %></p>
 <% end %>
