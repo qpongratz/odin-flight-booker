@@ -6,8 +6,4 @@ class FlightsController < ApplicationController
                      .includes(:arrival_airport)
                      .includes(:departure_airport)
   end
-
-  def new
-    @flight = Flight.find(params[:flight_id])
-  end
 end
