@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      @booking.passengers.each { |p| confirmation_email(p) }
+      @booking.passengers.each { |p| booking_confirmation(p) }
       flash[:notice] = 'Flight booked'
       redirect_to @booking
     else
@@ -25,8 +25,8 @@ class BookingsController < ApplicationController
 
   private
 
-  def confirmation_email(passenger)
-    PassengerMailer.with(passenger: passenger).confirmation_email.deliver_later
+  def booking_confirmation(passenger)
+    PassengerMailer.with(passenger: passenger).booking_confirmation.deliver_later
   end
 
   def booking_params
